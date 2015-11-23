@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://www.rns.com/xsd/services/Trip/2.2"
+  xmlns="http://www.rns.com/xsd/services/Trip/2.2"
+  xmlns:msg="http://www.rns.com/xsd/types/message/1.2"
+  elementFormDefault="qualified">
+
+  <xs:import namespace="http://www.rns.com/xsd/types/message/1.2"    
+             schemaLocation="/home/Ronak/Desktop/Trip/xsd/headers.xsd"  />
+
+  <xs:annotation>
+    <xs:documentation>
+      Input and Output types for the Trip service.
+    </xs:documentation>
+    </xs:annotation>
+    
+    <xs:element name="TripSearchRequest">
+       <xs:annotation>
+         <xs:documentation>
+           Information for Trip flight search request
+         </xs:documentation>
+       </xs:annotation>
+       <xs:complexType>
+         <xs:sequence>
+           <xs:element name="Header" type="msg:RequestHeader">
+           </xs:element>
+           <xs:element name="Body">
+             <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="flight_date" type="xs:date"/>
+                  <xs:element name="src_airport" type="xs:string"/>
+                  <xs:element name="dst_airport" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+           </xs:sequence>
+       </xs:complexType>
+    </xs:element>
+    <xs:element name="TripSearchResponse">
+    <xs:annotation>
+      <xs:documentation>
+        Information for Trip flight search response 
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Header" type="msg:ResponseHeader">
+        </xs:element>
+        <xs:element name="Body">
+          <xs:complexType>
+            <xs:sequence>
+               <xs:element name="flight_number" type="xs:integer"/>
+               <xs:element name="flight_date" type="xs:date"/>
+               <xs:element name="flight_time" type="xs:time"/>
+               <xs:element name="price" type="xs:float"/>
+             </xs:sequence>
+           </xs:complexType>
+         </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ </xs:element>
+
+
+
+
+<!-- ------------------------------------------------ -->
+
+ <xs:element name="TripBookingRequest">
+    <xs:annotation>
+      <xs:documentation>
+        Information for Trip flight booking request 
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Header" type="msg:RequestHeader">
+        </xs:element>
+        <xs:element name="Body">
+          <xs:complexType>
+            <xs:sequence>
+               <xs:element name="flight_number" type="xs:integer"/>
+               <xs:element name="flight_date" type="xs:date"/>
+               <xs:element name="flight_time" type="xs:time"/>
+               <xs:element name="src_airport" type="xs:string"/>
+               <xs:element name="dst_airport" type="xs:string"/>
+             </xs:sequence>
+           </xs:complexType>
+         </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ </xs:element>
+
+ <xs:element name="TripBookingResponse">
+     <xs:annotation>
+       <xs:documentation>
+         Information for Trip flight booking response 
+       </xs:documentation>
+     </xs:annotation>
+     <xs:complexType>
+       <xs:sequence>
+         <xs:element name="Header" type="msg:ResponseHeader">
+         </xs:element>
+         <xs:element name="Body">
+           <xs:complexType>
+             <xs:sequence>
+                <xs:element name="flight_status" type="xs:string"/>
+                <xs:element name="booking_confirmation_number" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+         </xs:sequence>
+     </xs:complexType>
+  </xs:element>
+ 
+</xs:schema>
